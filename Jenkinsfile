@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("madhavasok/pipeline")
+       app = docker.build("madhavasok/test")
     }
 
     stage('Test image') {
@@ -29,6 +29,6 @@ node {
     
     stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERV', value: env.BUILD_NUMBER)]
         }
 }
